@@ -1,0 +1,319 @@
+/* ============================================================
+   UNIVENT LETTERPAD — Invoice / Quotation Preview (A4)
+   ============================================================ */
+
+/* ── Page wrapper ── */
+.univent-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  padding: 10mm 12mm 8mm 16mm; /* extra left for blue strip */
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+  overflow: hidden;
+}
+
+/* ── Left blue strip ── */
+.univent-left-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1565c0, #1e88e5, #1565c0);
+}
+
+/* ── Watermark (faded butterfly logo in centre) ── */
+.univent-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+  width: 220px;
+}
+
+.univent-watermark img {
+  width: 100%;
+  height: auto;
+}
+
+/* ── All content sits above watermark ── */
+.univent-page > *:not(.univent-watermark):not(.univent-left-strip) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════
+   HEADER
+══════════════════════════════════ */
+.univent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  min-height: 70px;
+}
+
+/* Left: QUOTATION / INVOICE title */
+.univent-doc-title {
+  font-family: 'Georgia', 'Bookman Old Style', serif;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  color: #8B0000;
+  text-decoration: underline;
+  text-decoration-color: #8B0000;
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+
+/* Right: Logo + company info block */
+.univent-company-block {
+  text-align: right;
+  max-width: 260px;
+}
+
+.univent-top-logo {
+  width: 130px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 3px;
+}
+
+.univent-tagline {
+  font-size: 8.5px;
+  font-weight: bold;
+  color: #8B0000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.univent-affil {
+  font-size: 7.5px;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 1px;
+}
+
+/* ── Double horizontal separator ── */
+.univent-double-line {
+  border: none;
+  width: 100%;
+  margin: 5px 0;
+  border-top: 2px solid #9e9e9e;
+  position: relative;
+}
+
+.univent-double-line::after {
+  content: '';
+  display: block;
+  border-top: 1px solid #bdbdbd;
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════
+   CLIENT INFO GRID
+══════════════════════════════════ */
+.univent-info-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px 1fr;
+  border: 1px solid #bbb;
+  margin-bottom: 12px;
+}
+
+.uig-cell {
+  padding: 4px 7px;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  min-height: 20px;
+  font-size: 10.5px;
+}
+
+.uig-cell:last-child,
+.uig-cell:nth-child(4n) {
+  border-right: none;
+}
+
+.uig-label {
+  font-weight: bold;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* ══════════════════════════════════
+   ITEMS TABLE
+══════════════════════════════════ */
+.univent-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+  border: 1px solid #bbb;
+}
+
+.univent-table th {
+  background-color: #e8e8e8;
+  border: 1px solid #bbb;
+  padding: 7px 6px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10.5px;
+}
+
+.univent-table td {
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 6px;
+  vertical-align: top;
+  font-size: 10.5px;
+}
+
+.univent-table td:last-child {
+  border-right: none;
+}
+
+/* Column widths */
+.ut-sl    { width: 36px;  text-align: center; }
+.ut-desc  { text-align: left; }
+.ut-qty   { width: 52px;  text-align: center; }
+.ut-price { width: 76px;  text-align: center; }
+.ut-amount{ width: 76px;  text-align: center; }
+
+/* ══════════════════════════════════
+   TOTALS
+══════════════════════════════════ */
+.univent-totals {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: -1px; /* overlap bottom border of table */
+}
+
+.univent-totals td {
+  border: 1px solid #bbb;
+  padding: 5px 7px;
+  font-size: 10.5px;
+}
+
+.ut-words-cell {
+  width: 58%;
+  vertical-align: top;
+  border-right: 1px solid #bbb;
+}
+
+.ut-amount-words {
+  background: #fafafa;
+  border: 1px solid #bbb;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.ut-payment-terms {
+  border: 1px dotted #aaa;
+  padding: 6px 8px;
+  font-size: 9.5px;
+  margin-top: 4px;
+  color: #444;
+}
+
+.ut-total-label {
+  text-align: right;
+  font-weight: bold;
+  background-color: #e8e8e8;
+  padding: 5px 8px;
+  font-size: 10.5px;
+}
+
+.ut-total-value {
+  text-align: center;
+  width: 82px;
+  font-weight: bold;
+  font-size: 10.5px;
+}
+
+.ut-gross {
+  background-color: #1565c0;
+  color: #fff;
+}
+
+/* ══════════════════════════════════
+   SIGNATURE AREA
+══════════════════════════════════ */
+.univent-signature-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 28px;
+  margin-bottom: 6px;
+}
+
+.univent-signature {
+  text-align: right;
+  font-size: 11px;
+  color: #444;
+}
+
+.univent-signature p {
+  margin: 1px 0;
+}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.univent-footer-wrap {
+  margin-top: 10px;
+}
+
+.univent-footer {
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
+.uf-address {
+  font-size: 9.5px;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.uf-phone {
+  font-size: 9.5px;
+  color: #222;
+  margin-bottom: 3px;
+}
+
+.uf-phone-icon {
+  color: #F7941D;
+  font-size: 11px;
+  margin-right: 3px;
+}
+
+.uf-social {
+  font-size: 8.5px;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.uf-social-item {
+  white-space: nowrap;
+}
+
+.uf-dot {
+  color: #555;
+  font-size: 6px;
+}
