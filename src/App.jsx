@@ -82,7 +82,6 @@ function App() {
         {showTypeSelector && (
           <DocumentTypeSelector
             onSelect={handleDocumentTypeSelect}
-            onClose={() => setShowTypeSelector(false)}
           />
         )}
 
