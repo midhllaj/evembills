@@ -15,19 +15,19 @@ const DocumentTypeSelector = ({ onSelect, onClose }) => {
                     <Button
                         variant="outline"
                         className="h-32 flex flex-col gap-3"
-                        onClick={() => onSelect('quotation')}
+                        onClick={() => onSelect('estimate')}
                     >
                         <FileText className="h-12 w-12" />
-                        <span className="text-lg font-semibold">Quotation</span>
+                        <span className="text-lg font-semibold">Estimate</span>
                     </Button>
 
                     <Button
                         variant="outline"
                         className="h-32 flex flex-col gap-3"
-                        onClick={() => onSelect('invoice')}
+                        onClick={() => onSelect('cashbill')}
                     >
                         <Receipt className="h-12 w-12" />
-                        <span className="text-lg font-semibold">Invoice</span>
+                        <span className="text-lg font-semibold">Cash Bill</span>
                     </Button>
                 </div>
 

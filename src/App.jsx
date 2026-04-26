@@ -5,9 +5,9 @@ import DocumentTypeSelector from './components/DocumentTypeSelector';
 import './App.css';
 
 function App() {
-  const [showTypeSelector, setShowTypeSelector] = useState(false);
+  const [showTypeSelector, setShowTypeSelector] = useState(true);
   const [showPreview, setShowPreview] = useState(false);
-  const [documentType, setDocumentType] = useState('quotation');
+  const [documentType, setDocumentType] = useState('');
   const [invoiceData, setInvoiceData] = useState({
     quoteNo: '',
     date: new Date().toISOString().split('T')[0],
@@ -16,8 +16,15 @@ function App() {
     poBox: '',
     attention: '',
     subject: '',
-    vatEnabled: true,
+    vatEnabled: false,
     gstRate: 5,
+    venue: '',
+    time: '',
+    buyerOrderNo: '',
+    dispatch: '',
+    terms: '',
+    regNo: '',
+    panNo: '',
     items: []
   });
 
@@ -48,20 +55,29 @@ function App() {
   const handleDocumentTypeSelect = (type) => {
     setDocumentType(type);
     setShowTypeSelector(false);
-    setShowPreview(true);
+  };
+
+  const handleBackToDocumentTypes = () => {
+    setShowPreview(false);
+    setDocumentType('');
+    setShowTypeSelector(true);
   };
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
-        <InvoiceForm
-          data={invoiceData}
-          onChange={handleChange}
-          onAddItem={handleAddItem}
-          onRemoveItem={handleRemoveItem}
-          onPreview={() => setShowTypeSelector(true)}
-          onDownload={() => setShowTypeSelector(true)}
-        />
+        {documentType && (
+          <InvoiceForm
+            data={invoiceData}
+            onChange={handleChange}
+            onAddItem={handleAddItem}
+            onRemoveItem={handleRemoveItem}
+            onPreview={() => setShowPreview(true)}
+            onDownload={() => setShowPreview(true)}
+            onBack={handleBackToDocumentTypes}
+            documentType={documentType}
+          />
+        )}
 
         {showTypeSelector && (
           <DocumentTypeSelector
