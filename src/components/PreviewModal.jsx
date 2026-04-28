@@ -3,11 +3,18 @@ import InvoicePreview from './InvoicePreview';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { Button } from "@/components/ui/button";
-import { X, Download } from "lucide-react";
+import { X, Download, Palette } from "lucide-react";
+
+const previewThemes = [
+    { id: 'classic', label: 'Classic' },
+    { id: 'navy', label: 'Navy' },
+    { id: 'emerald', label: 'Emerald' },
+];
 
 const PreviewModal = ({ data, documentType, onClose }) => {
     const previewRef = useRef();
     const [scale, setScale] = React.useState(0.9);
+    const [theme, setTheme] = React.useState('classic');
 
     React.useEffect(() => {
         const handleResize = () => {
@@ -96,6 +103,26 @@ const PreviewModal = ({ data, documentType, onClose }) => {
                     </Button>
                 </div>
 
+                <div className="flex flex-col gap-3 border-b px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-2 text-sm font-medium">
+                        <Palette className="h-4 w-4" />
+                        Theme
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 sm:flex">
+                        {previewThemes.map((previewTheme) => (
+                            <Button
+                                key={previewTheme.id}
+                                variant={theme === previewTheme.id ? 'default' : 'outline'}
+                                size="sm"
+                                onClick={() => setTheme(previewTheme.id)}
+                                className="min-w-0"
+                            >
+                                {previewTheme.label}
+                            </Button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="flex-1 overflow-auto p-4 md:p-6 bg-gray-100 flex justify-center">
                     <div
                         style={{
@@ -104,7 +131,7 @@ const PreviewModal = ({ data, documentType, onClose }) => {
                             height: scale < 1 ? `${297 * 3.78 * scale}px` : 'auto' // Adjust height to avoid extra scroll space if scaled
                         }}
                     >
-                        <InvoicePreview data={data} documentType={documentType} ref={previewRef} />
+                        <InvoicePreview data={data} documentType={documentType} theme={theme} ref={previewRef} />
                     </div>
                 </div>
 

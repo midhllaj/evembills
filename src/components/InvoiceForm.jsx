@@ -157,6 +157,11 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                         </div>
                                     </div>
                                 ))}
+                                <div className="flex justify-end pt-2">
+                                    <Button variant="secondary" size="sm" onClick={onAddItem} className="w-full sm:w-auto">
+                                        <Plus className="mr-2 h-4 w-4" /> Add Item
+                                    </Button>
+                                </div>
                             </div>
                         </CardContent>
                     </Card>
@@ -328,6 +333,11 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                         </div>
                                     </div>
                                 ))}
+                                <div className="flex justify-end pt-2">
+                                    <Button variant="secondary" size="sm" onClick={onAddItem} className="w-full sm:w-auto">
+                                        <Plus className="mr-2 h-4 w-4" /> Add Item
+                                    </Button>
+                                </div>
                             </div>
                         </CardContent>
                     </Card>

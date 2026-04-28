@@ -385,3 +385,175 @@
   padding-top: 3px;
   color: #333;
 }
+
+/* ============================================================
+   PREVIEW THEMES
+   ============================================================ */
+
+.preview-theme-navy.evam-page,
+.preview-theme-navy.cashbill-page {
+  color: #172033;
+  background: #fbfcff;
+}
+
+.preview-theme-navy.evam-page {
+  padding-top: 12mm;
+}
+
+.preview-theme-navy .evam-header {
+  padding-bottom: 8px;
+  border-bottom: 3px solid #1f3a5f;
+}
+
+.preview-theme-navy .evam-company-text,
+.preview-theme-navy .evam-program-title,
+.preview-theme-navy .evam-total-label,
+.preview-theme-navy .evam-total-value,
+.preview-theme-navy .evam-info-row {
+  color: #172033;
+}
+
+.preview-theme-navy .evam-main-box,
+.preview-theme-navy .evam-program-title,
+.preview-theme-navy .evam-info-column,
+.preview-theme-navy .evam-table th,
+.preview-theme-navy .evam-table td,
+.preview-theme-navy .evam-empty-table td,
+.preview-theme-navy .evam-total-section {
+  border-color: #1f3a5f;
+}
+
+.preview-theme-navy .evam-main-box {
+  border-width: 1px;
+}
+
+.preview-theme-navy .evam-program-title {
+  background: #eef4fb;
+  text-decoration: none;
+}
+
+.preview-theme-navy .evam-table th {
+  background: #1f3a5f;
+  color: #fff;
+}
+
+.preview-theme-navy .evam-total-section {
+  background: #eef4fb;
+}
+
+.preview-theme-navy .cb-header,
+.preview-theme-navy .cb-header-left,
+.preview-theme-navy .cb-info-section,
+.preview-theme-navy .cb-info-left,
+.preview-theme-navy .cb-table,
+.preview-theme-navy .cb-table th,
+.preview-theme-navy .cb-table td,
+.preview-theme-navy .cb-total-section,
+.preview-theme-navy .cb-total-amount,
+.preview-theme-navy .cb-sign-line {
+  border-color: #1f3a5f;
+}
+
+.preview-theme-navy .cb-header {
+  background: #eef4fb;
+  border-top: 4px solid #1f3a5f;
+}
+
+.preview-theme-navy .cb-bill-title,
+.preview-theme-navy .cb-company-name,
+.preview-theme-navy .cb-total-label,
+.preview-theme-navy .cb-total-value {
+  color: #1f3a5f;
+}
+
+.preview-theme-navy .cb-table th {
+  background: #1f3a5f;
+  color: #fff;
+}
+
+.preview-theme-emerald.evam-page,
+.preview-theme-emerald.cashbill-page {
+  color: #12312a;
+  background: #fffdf8;
+}
+
+.preview-theme-emerald.evam-page {
+  padding: 12mm 15mm;
+}
+
+.preview-theme-emerald .evam-header {
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  background: #eaf7ef;
+  border-left: 5px solid #1f7a5b;
+}
+
+.preview-theme-emerald .evam-company-text,
+.preview-theme-emerald .evam-program-title,
+.preview-theme-emerald .evam-total-label,
+.preview-theme-emerald .evam-total-value,
+.preview-theme-emerald .evam-info-row {
+  color: #12312a;
+}
+
+.preview-theme-emerald .evam-main-box,
+.preview-theme-emerald .evam-program-title,
+.preview-theme-emerald .evam-info-column,
+.preview-theme-emerald .evam-table th,
+.preview-theme-emerald .evam-table td,
+.preview-theme-emerald .evam-empty-table td,
+.preview-theme-emerald .evam-total-section {
+  border-color: #1f7a5b;
+}
+
+.preview-theme-emerald .evam-main-box {
+  border-width: 1px;
+}
+
+.preview-theme-emerald .evam-program-title {
+  text-decoration: none;
+  letter-spacing: 0;
+}
+
+.preview-theme-emerald .evam-table th {
+  background: #1f7a5b;
+  color: #fff;
+}
+
+.preview-theme-emerald .evam-total-section {
+  background: #f4f0df;
+}
+
+.preview-theme-emerald .cb-header,
+.preview-theme-emerald .cb-header-left,
+.preview-theme-emerald .cb-info-section,
+.preview-theme-emerald .cb-info-left,
+.preview-theme-emerald .cb-table,
+.preview-theme-emerald .cb-table th,
+.preview-theme-emerald .cb-table td,
+.preview-theme-emerald .cb-total-section,
+.preview-theme-emerald .cb-total-amount,
+.preview-theme-emerald .cb-sign-line {
+  border-color: #1f7a5b;
+}
+
+.preview-theme-emerald .cb-header {
+  background: #eaf7ef;
+  border-left: 5px solid #1f7a5b;
+}
+
+.preview-theme-emerald .cb-bill-title,
+.preview-theme-emerald .cb-company-name,
+.preview-theme-emerald .cb-total-label,
+.preview-theme-emerald .cb-total-value {
+  color: #1f7a5b;
+}
+
+.preview-theme-emerald .cb-table th {
+  background: #eaf7ef;
+  color: #12312a;
+}
+
+.preview-theme-emerald .cb-total-section {
+  background: #fffdf8;
+}

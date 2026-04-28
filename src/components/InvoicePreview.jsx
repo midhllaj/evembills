@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { toWords } from 'number-to-words';
 
-const InvoicePreview = forwardRef(({ data, documentType = 'estimate' }, ref) => {
+const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'classic' }, ref) => {
     // Calculate totals
     const total = data.items.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
 
@@ -26,7 +26,7 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate' }, ref) => 
     // ESTIMATE DESIGN
     if (documentType === 'estimate') {
         return (
-            <div className="evam-page" ref={ref} id="invoice-preview">
+            <div className={`evam-page preview-theme-${theme}`} ref={ref} id="invoice-preview">
                 {/* Header: Company info left, Logo right */}
                 <div className="evam-header">
                     <div className="evam-company-text">EVAM EVENT PLANNERS , GURUVAYUR 9946637535</div>
@@ -91,7 +91,7 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate' }, ref) => 
 
     // CASH BILL DESIGN
     return (
-        <div className="cashbill-page" ref={ref} id="invoice-preview">
+        <div className={`cashbill-page preview-theme-${theme}`} ref={ref} id="invoice-preview">
             {/* Header */}
             <div className="cb-header">
                 <div className="cb-header-left">
