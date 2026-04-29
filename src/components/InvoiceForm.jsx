@@ -7,6 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Plus, Trash2, FileText, Download, ArrowLeft } from "lucide-react";
 
 const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDownload, onBack, documentType }) => {
+    const itemsEndRef = React.useRef(null);
+    const previousItemCountRef = React.useRef(data.items.length);
+
+    React.useEffect(() => {
+        if (data.items.length > previousItemCountRef.current) {
+            window.requestAnimationFrame(() => {
+                itemsEndRef.current?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                });
+            });
+        }
+
+        previousItemCountRef.current = data.items.length;
+    }, [data.items.length]);
+
     const handleItemChange = (index, field, value) => {
         const newItems = [...data.items];
         newItems[index][field] = value;
@@ -157,11 +173,15 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                         </div>
                                     </div>
                                 ))}
-                                <div className="flex justify-end pt-2">
+                                <div className="flex flex-col justify-end gap-2 pt-2 sm:flex-row">
                                     <Button variant="secondary" size="sm" onClick={onAddItem} className="w-full sm:w-auto">
                                         <Plus className="mr-2 h-4 w-4" /> Add Item
                                     </Button>
+                                    <Button variant="outline" size="sm" onClick={onPreview} className="w-full sm:w-auto">
+                                        <FileText className="mr-2 h-4 w-4" /> Preview
+                                    </Button>
                                 </div>
+                                <div ref={itemsEndRef} />
                             </div>
                         </CardContent>
                     </Card>
@@ -333,11 +353,15 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                         </div>
                                     </div>
                                 ))}
-                                <div className="flex justify-end pt-2">
+                                <div className="flex flex-col justify-end gap-2 pt-2 sm:flex-row">
                                     <Button variant="secondary" size="sm" onClick={onAddItem} className="w-full sm:w-auto">
                                         <Plus className="mr-2 h-4 w-4" /> Add Item
                                     </Button>
+                                    <Button variant="outline" size="sm" onClick={onPreview} className="w-full sm:w-auto">
+                                        <FileText className="mr-2 h-4 w-4" /> Preview
+                                    </Button>
                                 </div>
+                                <div ref={itemsEndRef} />
                             </div>
                         </CardContent>
                     </Card>

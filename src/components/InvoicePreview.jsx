@@ -23,6 +23,120 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'c
         return `${day}/${month}/${year}`;
     };
 
+    if (theme === 'letterhead') {
+        const heading = documentType === 'estimate' ? 'ESTIMATE' : 'CASH BILL';
+        const referenceLabel = documentType === 'estimate' ? 'Estimate No' : 'Bill No';
+        const clientLabel = documentType === 'estimate' ? 'Client Name' : 'Consignee';
+        const address = documentType === 'estimate' ? data.venue : data.poBox;
+        const subject = documentType === 'estimate' ? data.subject : data.venue;
+        const itemRows = data.items.length > 0 ? data.items : [{ description: '', quantity: '', unitPrice: '', amount: '' }];
+        const emptyRows = Array.from({ length: Math.max(0, 9 - itemRows.length) });
+
+        return (
+            <div className="letterhead-page" ref={ref} id="invoice-preview">
+                <div className="letterhead-header">
+                    <div className="letterhead-title">{heading}</div>
+                    <div className="letterhead-brand">
+                        <img src="/Screenshot 2026-04-21 190807.png" alt="Evam Event Planners" className="letterhead-logo" />
+                        <div className="letterhead-tagline">EVENT MANAGEMENT AND PLANNING</div>
+                        <div className="letterhead-contact">Guruvayur | 9946637535</div>
+                    </div>
+                </div>
+
+                <table className="letterhead-info-table">
+                    <tbody>
+                        <tr>
+                            <th>{referenceLabel}</th>
+                            <td>{data.quoteNo || '-'}</td>
+                            <th>Date</th>
+                            <td>{formatDate(data.date)}</td>
+                        </tr>
+                        <tr>
+                            <th>{clientLabel}</th>
+                            <td colSpan="3">{data.company || '-'}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td colSpan="3">{address || '-'}</td>
+                        </tr>
+                        <tr>
+                            <th>Subject</th>
+                            <td colSpan="3">{subject || '-'}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table className="letterhead-items-table">
+                    <thead>
+                        <tr>
+                            <th className="lht-sl">Sl. No.</th>
+                            <th className="lht-description">Description</th>
+                            <th className="lht-qty">Qty</th>
+                            <th className="lht-rate">Unit Price</th>
+                            <th className="lht-amount">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {itemRows.map((item, index) => (
+                            <tr key={index}>
+                                <td className="lht-sl">{index + 1}</td>
+                                <td className="lht-description">{item.description}</td>
+                                <td className="lht-qty">{item.quantity || ''}</td>
+                                <td className="lht-rate">{item.unitPrice ? parseFloat(item.unitPrice).toFixed(2) : ''}</td>
+                                <td className="lht-amount">{parseFloat(item.amount || 0).toFixed(2)}</td>
+                            </tr>
+                        ))}
+                        {emptyRows.map((_, index) => (
+                            <tr key={`empty-${index}`}>
+                                <td className="lht-sl">&nbsp;</td>
+                                <td className="lht-description">&nbsp;</td>
+                                <td className="lht-qty">&nbsp;</td>
+                                <td className="lht-rate">&nbsp;</td>
+                                <td className="lht-amount">&nbsp;</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+                <div className="letterhead-summary">
+                    <div className="letterhead-words">
+                        <strong>Amount in Words (INR):</strong>
+                        <span>{numberToWords(total)} ONLY.</span>
+                    </div>
+                    <div className="letterhead-totals">
+                        <div><span>TOTAL (INR)</span><strong>{total.toFixed(2)}</strong></div>
+                        <div><span>GST (5%)</span><strong>0.00</strong></div>
+                        <div className="letterhead-grand"><span>GROSS TOTAL (INR)</span><strong>{total.toFixed(2)}</strong></div>
+                    </div>
+                </div>
+
+                <div className="letterhead-payment">
+                    {documentType === 'estimate' ? (
+                        <>
+                            PAYMENT: ADVANCE PAYMENT<br />
+                            FOR THE BEST QUALITY AND SERVICE, NOW AND ALWAYS
+                        </>
+                    ) : (
+                        <>
+                            Declaration: We declare that this bill shows the actual amount<br />
+                            and that all particulars are true and correct.
+                        </>
+                    )}
+                </div>
+
+                <div className="letterhead-signature">
+                    <span>Director</span>
+                    <strong>Evam Event Planners</strong>
+                </div>
+
+                <div className="letterhead-footer">
+                    <div>Guruvayur, Kerala</div>
+                    <div>9946637535</div>
+                </div>
+            </div>
+        );
+    }
+
     // ESTIMATE DESIGN
     if (documentType === 'estimate') {
         return (

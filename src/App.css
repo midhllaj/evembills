@@ -557,3 +557,214 @@
 .preview-theme-emerald .cb-total-section {
   background: #fffdf8;
 }
+
+/* Letterhead theme */
+.letterhead-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fffef9;
+  padding: 18mm 14mm 14mm;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #0b3f35;
+}
+
+.letterhead-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 72px;
+  margin-bottom: 14px;
+}
+
+.letterhead-title {
+  color: #0b3f35;
+  font-size: 21px;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: #d4a021;
+}
+
+.letterhead-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 260px;
+  text-align: right;
+}
+
+.letterhead-logo {
+  width: 92px;
+  height: auto;
+  object-fit: contain;
+}
+
+.letterhead-tagline {
+  margin-top: 4px;
+  color: #0b3f35;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.letterhead-contact {
+  margin-top: 3px;
+  color: #d4a021;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.letterhead-info-table,
+.letterhead-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.letterhead-info-table {
+  margin-bottom: 10px;
+}
+
+.letterhead-info-table th,
+.letterhead-info-table td {
+  border: 1px solid #d8c792;
+  padding: 5px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.letterhead-info-table th {
+  width: 110px;
+  background: #f6efd9;
+  font-weight: 800;
+}
+
+.letterhead-info-table td {
+  height: 20px;
+}
+
+.letterhead-items-table th,
+.letterhead-items-table td {
+  border: 1px solid #d8c792;
+  padding: 6px 7px;
+  vertical-align: top;
+}
+
+.letterhead-items-table th {
+  background: #0b3f35;
+  color: #fffef9;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.letterhead-items-table td {
+  height: 34px;
+}
+
+.lht-sl {
+  width: 42px;
+  text-align: center;
+}
+
+.lht-description {
+  text-align: left;
+}
+
+.lht-qty {
+  width: 55px;
+  text-align: center;
+}
+
+.lht-rate {
+  width: 72px;
+  text-align: right;
+}
+
+.lht-amount {
+  width: 78px;
+  text-align: right;
+}
+
+.letterhead-summary {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  border-left: 1px solid #d8c792;
+  border-right: 1px solid #d8c792;
+  border-bottom: 1px solid #d8c792;
+}
+
+.letterhead-words {
+  padding: 8px;
+  border-right: 1px solid #d8c792;
+  min-height: 48px;
+}
+
+.letterhead-words strong,
+.letterhead-words span {
+  display: block;
+}
+
+.letterhead-totals div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 8px;
+  border-bottom: 1px solid #d8c792;
+  font-weight: 800;
+}
+
+.letterhead-totals div:last-child {
+  border-bottom: none;
+}
+
+.letterhead-grand {
+  background: #d4a021;
+  color: #0b3f35;
+}
+
+.letterhead-payment {
+  width: 60%;
+  border-left: 1px solid #d8c792;
+  border-right: 1px solid #d8c792;
+  border-bottom: 1px solid #d8c792;
+  padding: 7px 8px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.letterhead-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  margin-top: 36px;
+  font-size: 10px;
+}
+
+.letterhead-signature strong {
+  font-size: 11px;
+}
+
+.letterhead-footer {
+  position: absolute;
+  left: 14mm;
+  right: 14mm;
+  bottom: 15mm;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  border-top: 1px solid #d8c792;
+  padding-top: 8px;
+  color: #0b3f35;
+  font-size: 9px;
+}

@@ -9,6 +9,7 @@ const previewThemes = [
     { id: 'classic', label: 'Classic' },
     { id: 'navy', label: 'Navy' },
     { id: 'emerald', label: 'Emerald' },
+    { id: 'letterhead', label: 'Letterhead' },
 ];
 
 const PreviewModal = ({ data, documentType, onClose }) => {
@@ -73,12 +74,39 @@ const PreviewModal = ({ data, documentType, onClose }) => {
             const pdfHeight = 297;
 
             const pdf = new jsPDF('p', 'mm', 'a4', true);
+            const pageCanvas = document.createElement('canvas');
+            const pageContext = pageCanvas.getContext('2d');
+            const pageHeightPx = Math.floor(canvas.width * (pdfHeight / pdfWidth));
+            const totalPages = Math.ceil(canvas.height / pageHeightPx);
 
-            // Calculate height to maintain aspect ratio, although A4 is fixed
-            const imgProps = pdf.getImageProperties(imgData);
-            const pdfImageHeight = (imgProps.height * pdfWidth) / imgProps.width;
+            pageCanvas.width = canvas.width;
 
-            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfImageHeight, undefined, 'FAST');
+            for (let pageIndex = 0; pageIndex < totalPages; pageIndex += 1) {
+                const sourceY = pageIndex * pageHeightPx;
+                const sliceHeight = Math.min(pageHeightPx, canvas.height - sourceY);
+
+                pageCanvas.height = pageHeightPx;
+                pageContext.fillStyle = '#ffffff';
+                pageContext.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
+                pageContext.drawImage(
+                    canvas,
+                    0,
+                    sourceY,
+                    canvas.width,
+                    sliceHeight,
+                    0,
+                    0,
+                    pageCanvas.width,
+                    sliceHeight
+                );
+
+                if (pageIndex > 0) {
+                    pdf.addPage();
+                }
+
+                const pageImgData = pageCanvas.toDataURL('image/png', 1.0);
+                pdf.addImage(pageImgData, 'PNG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
+            }
 
             const fileName = documentType === 'invoice' ? 'Invoice' : 'Quotation';
             pdf.save(`${fileName}_${data.quoteNo || 'Draft'}.pdf`);
@@ -108,7 +136,7 @@ const PreviewModal = ({ data, documentType, onClose }) => {
                         <Palette className="h-4 w-4" />
                         Theme
                     </div>
-                    <div className="grid grid-cols-3 gap-2 sm:flex">
+                    <div className="grid grid-cols-2 gap-2 sm:flex">
                         {previewThemes.map((previewTheme) => (
                             <Button
                                 key={previewTheme.id}
