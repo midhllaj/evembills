@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { Plus, Trash2, FileText, Download, ArrowLeft } from "lucide-react";
 
 const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDownload, onBack, documentType }) => {
@@ -113,7 +114,7 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
 
                         <Card>
                             <CardHeader>
-                                <CardTitle>Client Information</CardTitle>
+                                <CardTitle>Client & Payment</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="space-y-2">
@@ -124,6 +125,39 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                         onChange={(e) => onChange('company', e.target.value)}
                                     />
                                 </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="advanceAmount">Advance to Pay</Label>
+                                    <Input
+                                        id="advanceAmount"
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        value={data.advanceAmount || ''}
+                                        onChange={(e) => onChange('advanceAmount', e.target.value)}
+                                        placeholder="e.g., 5000"
+                                    />
+                                </div>
+                                <div className="flex items-center justify-between gap-4 rounded-md border p-3">
+                                    <Label htmlFor="estimateGstEnabled" className="cursor-pointer">GST</Label>
+                                    <Switch
+                                        id="estimateGstEnabled"
+                                        checked={data.vatEnabled}
+                                        onCheckedChange={(checked) => onChange('vatEnabled', checked)}
+                                    />
+                                </div>
+                                {data.vatEnabled && (
+                                    <div className="space-y-2">
+                                        <Label htmlFor="estimateGstRate">GST Rate (%)</Label>
+                                        <Input
+                                            id="estimateGstRate"
+                                            type="number"
+                                            min="0"
+                                            step="0.01"
+                                            value={data.gstRate ?? 5}
+                                            onChange={(e) => onChange('gstRate', e.target.value)}
+                                        />
+                                    </div>
+                                )}
                             </CardContent>
                         </Card>
                     </div>
@@ -255,6 +289,41 @@ const InvoiceForm = ({ data, onChange, onAddItem, onRemoveItem, onPreview, onDow
                                             onChange={(e) => onChange('terms', e.target.value)}
                                         />
                                     </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="advanceAmount">Advance Received</Label>
+                                        <Input
+                                            id="advanceAmount"
+                                            type="number"
+                                            min="0"
+                                            step="0.01"
+                                            value={data.advanceAmount || ''}
+                                            onChange={(e) => onChange('advanceAmount', e.target.value)}
+                                            placeholder="e.g., 5000"
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between gap-4 rounded-md border p-3">
+                                            <Label htmlFor="cashbillGstEnabled" className="cursor-pointer">GST</Label>
+                                            <Switch
+                                                id="cashbillGstEnabled"
+                                                checked={data.vatEnabled}
+                                                onCheckedChange={(checked) => onChange('vatEnabled', checked)}
+                                            />
+                                        </div>
+                                    </div>
+                                    {data.vatEnabled && (
+                                        <div className="space-y-2">
+                                            <Label htmlFor="cashbillGstRate">GST Rate (%)</Label>
+                                            <Input
+                                                id="cashbillGstRate"
+                                                type="number"
+                                                min="0"
+                                                step="0.01"
+                                                value={data.gstRate ?? 5}
+                                                onChange={(e) => onChange('gstRate', e.target.value)}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                             </CardContent>
                         </Card>

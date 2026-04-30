@@ -25,6 +25,7 @@ function App() {
     terms: '',
     regNo: '',
     panNo: '',
+    advanceAmount: '',
     items: []
   });
 

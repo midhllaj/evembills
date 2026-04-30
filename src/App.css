@@ -155,6 +155,41 @@
   background-color: #fff;
 }
 
+.evam-total-stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+}
+
+.evam-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 8px;
+}
+
+.evam-total-row + .evam-total-row {
+  border-top: 1px solid #000;
+}
+
+.evam-gross-row,
+.evam-advance-row,
+.evam-balance-row {
+  background-color: #f7f7f7;
+}
+
+.evam-gross-row {
+  background: #111;
+  color: #fff;
+}
+
+.evam-gross-row .evam-total-label,
+.evam-gross-row .evam-total-value {
+  color: #fff;
+}
+
 .evam-total-label {
   font-size: 12px;
   font-weight: bold;
@@ -328,6 +363,24 @@
   border-top: 1px solid #000;
 }
 
+.cb-adjustment-amount .cb-total-label,
+.cb-adjustment-amount .cb-total-value {
+  font-size: 11px;
+  color: #333;
+}
+
+.cb-balance-amount {
+  background: #111;
+  color: #fff;
+  margin: 0 -12px -8px;
+  padding: 8px 12px;
+}
+
+.cb-balance-amount .cb-total-label,
+.cb-balance-amount .cb-total-value {
+  color: #fff;
+}
+
 .cb-total-label {
   font-size: 12px;
   font-weight: bold;
@@ -419,7 +472,8 @@
 .preview-theme-navy .evam-table th,
 .preview-theme-navy .evam-table td,
 .preview-theme-navy .evam-empty-table td,
-.preview-theme-navy .evam-total-section {
+.preview-theme-navy .evam-total-section,
+.preview-theme-navy .evam-total-row + .evam-total-row {
   border-color: #1f3a5f;
 }
 
@@ -439,6 +493,24 @@
 
 .preview-theme-navy .evam-total-section {
   background: #eef4fb;
+}
+
+.preview-theme-navy .evam-advance-row,
+.preview-theme-navy .evam-balance-row {
+  background: #eef4fb;
+}
+
+.preview-theme-navy .evam-gross-row {
+  background: #1f3a5f;
+}
+
+.preview-theme-navy .cb-balance-amount {
+  background: #1f3a5f;
+}
+
+.preview-theme-navy .cb-balance-amount .cb-total-label,
+.preview-theme-navy .cb-balance-amount .cb-total-value {
+  color: #fff;
 }
 
 .preview-theme-navy .cb-header,
@@ -502,7 +574,8 @@
 .preview-theme-emerald .evam-table th,
 .preview-theme-emerald .evam-table td,
 .preview-theme-emerald .evam-empty-table td,
-.preview-theme-emerald .evam-total-section {
+.preview-theme-emerald .evam-total-section,
+.preview-theme-emerald .evam-total-row + .evam-total-row {
   border-color: #1f7a5b;
 }
 
@@ -522,6 +595,24 @@
 
 .preview-theme-emerald .evam-total-section {
   background: #f4f0df;
+}
+
+.preview-theme-emerald .evam-advance-row,
+.preview-theme-emerald .evam-balance-row {
+  background: #f4f0df;
+}
+
+.preview-theme-emerald .evam-gross-row {
+  background: #1f7a5b;
+}
+
+.preview-theme-emerald .cb-balance-amount {
+  background: #1f7a5b;
+}
+
+.preview-theme-emerald .cb-balance-amount .cb-total-label,
+.preview-theme-emerald .cb-balance-amount .cb-total-value {
+  color: #fff;
 }
 
 .preview-theme-emerald .cb-header,
