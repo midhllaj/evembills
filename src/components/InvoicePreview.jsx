@@ -1,6 +1,19 @@
 import React, { forwardRef } from 'react';
 import { toWords } from 'number-to-words';
 
+const instagramId = 'evam_event_planners';
+const website = 'evameventplanners.in';
+const instagramUrl = 'https://www.instagram.com/evam_event_planners';
+const websiteUrl = 'https://evameventplanners.in';
+
+const ContactLinks = ({ separator = ' | ' }) => (
+    <>
+        <a href={instagramUrl} target="_blank" rel="noreferrer">{instagramId}</a>
+        {separator}
+        <a href={websiteUrl} target="_blank" rel="noreferrer">{website}</a>
+    </>
+);
+
 const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'classic' }, ref) => {
     // Calculate totals
     const total = data.items.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
@@ -46,6 +59,7 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'c
                         <img src="/Screenshot 2026-04-21 190807.png" alt="Evam Event Planners" className="letterhead-logo" />
                         <div className="letterhead-tagline">EVAM EVENT PLANNERS</div>
                         <div className="letterhead-contact">Guruvayur | 9946637535</div>
+                        <div className="letterhead-contact"><ContactLinks /></div>
                     </div>
                 </div>
 
@@ -149,6 +163,8 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'c
                 <div className="letterhead-footer">
                     <div>Guruvayur, Kerala</div>
                     <div>9946637535</div>
+                    <div><a href={instagramUrl} target="_blank" rel="noreferrer">{instagramId}</a></div>
+                    <div><a href={websiteUrl} target="_blank" rel="noreferrer">{website}</a></div>
                 </div>
             </div>
         );
@@ -160,7 +176,10 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'c
             <div className={`evam-page preview-theme-${theme}`} ref={ref} id="invoice-preview">
                 {/* Header: Company info left, Logo right */}
                 <div className="evam-header">
-                    <div className="evam-company-text">EVAM EVENT PLANNERS , GURUVAYUR 9946637535</div>
+                    <div className="evam-company-block">
+                        <div className="evam-company-text">EVAM EVENT PLANNERS , GURUVAYUR 9946637535</div>
+                        <div className="evam-social-text"><ContactLinks /></div>
+                    </div>
                     <img src="/Screenshot 2026-04-21 190807.png" alt="Evam Event Planners" className="evam-logo" />
                 </div>
 
@@ -359,6 +378,8 @@ const InvoicePreview = forwardRef(({ data, documentType = 'estimate', theme = 'c
                     <div className="cb-reg-info">
                         <div>Registration No: {data.regNo || '-'}</div>
                         <div>PAN No: {data.panNo || 'LCTPS7110M'}</div>
+                        <div>Instagram: <a href={instagramUrl} target="_blank" rel="noreferrer">{instagramId}</a></div>
+                        <div>Website: <a href={websiteUrl} target="_blank" rel="noreferrer">{website}</a></div>
                     </div>
                 </div>
                 <div className="cb-footer-right">
